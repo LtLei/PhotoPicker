@@ -50,7 +50,6 @@ public final class SelectionSpec {
     public float cropX, cropY;
     public int cropWidth, cropHeight;
     public String profileFileName = "matisse.jpeg";
-    public UCrop uCrop;
     private SelectionSpec() {
     }
 
@@ -65,7 +64,6 @@ public final class SelectionSpec {
     }
 
     private void reset() {
-        uCrop = null;
         cropX = 0;
         cropY = 0;
         cropWidth = 0;

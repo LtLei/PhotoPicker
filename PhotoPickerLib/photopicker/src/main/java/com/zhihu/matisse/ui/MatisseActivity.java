@@ -349,20 +349,21 @@ public class MatisseActivity extends AppCompatActivity implements
             startActivityForResult(intent, REQUEST_CODE_PREVIEW);
         } else {
             //跳转到uCrop裁剪页面
-            UCrop uCrop = SelectionSpec.getInstance().uCrop;
-            if (uCrop == null) {
-                uCrop = UCrop.of(item.getContentUri(), Uri.fromFile(new File(getCacheDir(), SelectionSpec.getInstance().profileFileName)));
+            UCrop uCrop = UCrop.of(item.getContentUri(), Uri.fromFile(new File(getCacheDir(), SelectionSpec.getInstance().profileFileName)));
 
-                UCrop.Options options = SelectionSpec.getInstance().cropOptions;
-                if (options != null) {
-                    uCrop.withOptions(options);
-                }
-                uCrop.withAspectRatio(SelectionSpec.getInstance().cropX, SelectionSpec.getInstance().cropY)
-                        .withMaxResultSize(SelectionSpec.getInstance().cropWidth, SelectionSpec.getInstance().cropHeight)
-                        .start(MatisseActivity.this);
-            } else {
-                uCrop.start(MatisseActivity.this);
+            UCrop.Options options = SelectionSpec.getInstance().cropOptions;
+            if (options != null) {
+                uCrop.withOptions(options);
             }
+            if (SelectionSpec.getInstance().cropX == 0 || SelectionSpec.getInstance().cropY == 0) {
+                uCrop.useSourceImageAspectRatio();
+            } else {
+                uCrop.withAspectRatio(SelectionSpec.getInstance().cropX, SelectionSpec.getInstance().cropY);
+            }
+            if (SelectionSpec.getInstance().cropWidth != 0 && SelectionSpec.getInstance().cropHeight != 0)
+                uCrop.withMaxResultSize(SelectionSpec.getInstance().cropWidth, SelectionSpec.getInstance().cropHeight);
+
+            uCrop.start(MatisseActivity.this);
         }
     }
 

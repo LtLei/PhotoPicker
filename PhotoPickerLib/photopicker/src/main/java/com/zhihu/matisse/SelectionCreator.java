@@ -162,10 +162,6 @@ public final class SelectionCreator {
         mSelectionSpec.cropOptions = cropOptions;
         return this;
     }
-    public SelectionCreator setCrop(@NonNull UCrop uCrop){
-        mSelectionSpec.uCrop = uCrop;
-        return this;
-    }
     public SelectionCreator setProfileFileName(@NonNull String fileName) {
         if (TextUtils.isEmpty(fileName)) throw new IllegalArgumentException("file name is empty.");
 

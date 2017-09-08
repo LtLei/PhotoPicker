@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
                             UCrop.Options options = new UCrop.Options();
                             options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
                             options.setHideBottomControls(true);
-                            options.setCompressionQuality(75);
-                            options.setMaxBitmapSize(500);
+                            options.setCompressionQuality(100);
+//                            options.setMaxBitmapSize(500);
                             options.setToolbarColor(getResources().getColor(R.color.colorPrimary));
                             options.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
                             options.setAllowedGestures(UCropActivity.ALL, UCropActivity.ALL, UCropActivity.ALL);
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                                     .showSingleMediaType(true)
                                     .useProfilePhotoMode(true)
                                     .setCropOptions(options)
-                                    .setCropRatio(3, 2)
+                                    .setCropRatio(0, 2)
                                     .setProfileFileName("heihei.jpeg")
                                     .gridExpectedSize(
                                             getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
